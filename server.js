@@ -26,17 +26,21 @@ let connectOptions = [
 
 let sql = new SQL(...connectOptions);
 
+//when browser sends get request
 app.get('/', (req, res, next) => {
-    res.render('index')
+    res.render('index');
 })
 
-app.post('/insert', async (req, res, next) => {
+// when browser sends post request to /insert
+app.post('/insert', (req, res, next) => {
+    //form data
     let name = req.body.name;
     let email = req.body.email;
-    let telephone = req.body.phoneNumber;
+    let telephone = req.body.phoneNo;
     let password = req.body.password;
 
-    let result = await sql.insert(name, email, telephone, password);
+    // wait for the data to be inserted into the database
+    sql.insert(name, email, telephone, password);
 
     res.render('index');
 });

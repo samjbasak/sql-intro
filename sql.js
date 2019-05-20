@@ -10,15 +10,8 @@ class SQL {
         });
     }
 
-    connect() {
-        this.connection.connect();
-    }
-
-    endConnection() {
-        this.connection.end();
-    }
-
     insert(name, email, telephone, password) {
+        console.log(telephone);
         this.connection.query(`insert into user select '${name}', '${email}', '${telephone}', '${password}';`, (error, results, fields) => {
             if (error) throw error;
         });
