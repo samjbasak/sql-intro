@@ -26,7 +26,7 @@ let connectOptions = [
 
 let sql = new SQL(...connectOptions);
 
-app.get('/', (req,res,next) => {
+app.get('/', (req, res, next) => {
     res.render('index')
 })
 
@@ -48,9 +48,10 @@ app.post('/', async (req, res, next) => {
     console.log(result);
 
     res.render('index', {
-        name: result.name,
+        name: result.username,
         email: result.email,
-        phoneNo: result.phoneNo
+        phoneNo: result.telephone_number,
+        password: result.password
     });
 })
 
